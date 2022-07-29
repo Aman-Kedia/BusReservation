@@ -65,6 +65,12 @@ class BusManagementSystemApplicationTests {
 		User user = userDao.findUserByUserId(1007);
 		System.out.println(user.getFirstName() + " " + user.getUserId());
 	}
+	
+	@Test
+	public void findUserByEmailIdTest(){
+		User user = userDao.findUserByEmailId("mike@lti.com");
+		System.out.println(user.getFirstName() + " " + user.getUserId());
+	}
 
 	@Test
 	public void viewAllUsersTest() {
@@ -220,8 +226,8 @@ class BusManagementSystemApplicationTests {
 	
 	@Test
 	public void findAllSeatsBookedTest() {
-		List<Object[]> seats = passengerDao.findAllSeatsBooked(4001, "15-08-2022");
-		for (Object s:seats) {
+		List<Integer> seats = passengerDao.findAllSeatsBooked(4001, "15-08-2022");
+		for (Integer s:seats) {
 			System.out.println(s);
 		}
 	}

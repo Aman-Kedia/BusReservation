@@ -50,9 +50,9 @@ public class AdminController {
 //	http://localhost:9090/admin/find_user/1008                                                             [15]
 		
 //	TESTED IN SPRING BOOT
-	@RequestMapping(value = "/finduser/{user_id}", method = RequestMethod.GET)
-	public User findUser(@PathVariable int user_id) {
-		return userService.findUser(user_id);
+	@RequestMapping(value = "/finduser/{emailId}", method = RequestMethod.GET)
+	public User findUser(@PathVariable String emailId) {
+		return userService.findUser(emailId);
 	}
 	
 //	http://localhost:9090/admin/view_users                                                                 [16]

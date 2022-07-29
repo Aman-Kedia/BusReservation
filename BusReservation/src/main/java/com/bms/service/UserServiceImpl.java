@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	public User findUser(int userId) {
-		return userDao.findUserByUserId(userId);
+	public User findUser(String email) {
+		return userDao.findUserByEmailId(email);
 	}
 
 	public List<User> viewAllUsers() {

@@ -9,6 +9,8 @@ public interface UserDao {
 	User addOrUpdateUser(User user);
 
 	User findUserByUserId(int userId);
+	
+	User findUserByEmailId(String email);
 
 	List<User> viewAllUsers();
 

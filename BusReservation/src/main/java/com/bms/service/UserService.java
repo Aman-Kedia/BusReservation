@@ -10,7 +10,7 @@ public interface UserService {
 	
 	UpdateUser updateUser(User user);
 	
-	User findUser(int userId);
+	User findUser(String email);
 	
 	List<User> viewAllUsers();
 	

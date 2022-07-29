@@ -36,7 +36,7 @@ public class User {
 
 	private int isAdmin;
 
-	@Column(columnDefinition = "int default 250.0")
+	@Column(columnDefinition = "double default 250.0")
 	private double walletBalance;
 
 	@JsonIgnore

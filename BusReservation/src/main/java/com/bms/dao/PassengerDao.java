@@ -2,6 +2,8 @@ package com.bms.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+
 import com.bms.entity.Passenger;
 
 public interface PassengerDao {
@@ -9,5 +11,5 @@ public interface PassengerDao {
 
 	List<Passenger> findAllPassengersByBusId(int busId);
 	
-	List<Object[]> findAllSeatsBooked(int busId, String travelDate);
+	List<Integer> findAllSeatsBooked(int busId, String travelDate);
 }

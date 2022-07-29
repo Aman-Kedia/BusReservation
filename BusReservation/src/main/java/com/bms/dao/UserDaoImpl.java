@@ -29,6 +29,13 @@ public class UserDaoImpl implements UserDao {
 		return em.find(User.class, userId);
 	}
 
+	public User findUserByEmailId(String email) {
+		String jpql = "select u from User u where u.email=:email";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("email", email);
+		return query.getSingleResult();
+	}
+	
 	//TESTED IN SPRING BOOT
 	public List<User> viewAllUsers() {
 		String jpql = "select u from User u";

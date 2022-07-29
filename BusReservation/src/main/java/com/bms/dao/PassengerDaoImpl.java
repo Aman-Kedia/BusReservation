@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -31,9 +32,14 @@ public class PassengerDaoImpl implements PassengerDao {
         return qry.getResultList();
 	}
 	
-	public List<Object[]> findAllSeatsBooked(int busId, String travelDate) {
-		String jpql = "select p.seatNo from Passenger p where p.busId=busId and p.travelDate=travelDate";
-		TypedQuery<Object[]> query = (TypedQuery<Object[]>) em.createQuery(jpql);
+	public List<Integer> findAllSeatsBooked(int busId, String travelDate) {
+//		String jpql = "select p.seatNo from Passenger p where p.busId=busId and p.travelDate=travelDate";
+//		TypedQuery<Object[]> query = (TypedQuery<Object[]>) em.createQuery(jpql);
+//		query.setParameter("busId", busId);
+//		query.setParameter("travelDate", travelDate);
+//		return query.getResultList();
+		
+		Query query = em.createQuery("select p.seatNo from Passenger p where p.busId=busId and p.travelDate=travelDate");
 		query.setParameter("busId", busId);
 		query.setParameter("travelDate", travelDate);
 		return query.getResultList();
