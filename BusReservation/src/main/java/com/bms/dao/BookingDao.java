@@ -15,4 +15,5 @@ public interface BookingDao {
 	List<Booking> findAllBookingsByBusId(int BusId);
 
 	Booking cancelBooking(int BookingId);		//return type booking
+	
 }

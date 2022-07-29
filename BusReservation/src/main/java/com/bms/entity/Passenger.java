@@ -17,15 +17,15 @@ public class Passenger {
 	@Id
 	@SequenceGenerator(name = "bms_passenger_seq", initialValue = 3001, allocationSize = 1)
 	@GeneratedValue(generator = "bms_passenger_seq", strategy = GenerationType.SEQUENCE)
-	int passengerId;
+	private int passengerId;
 
-	String firstName;
-	String lastName;
-	String emailId;
-	String phoneNo;
-	String dateOfBirth;
-	String travelDate;
-	String seatNo;
+	private String firstName;
+	private String lastName;
+	private String emailId;
+	private String phoneNo;
+	private String dateOfBirth;
+	private String travelDate;
+	private String seatNo;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "bookingId")

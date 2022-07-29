@@ -22,11 +22,11 @@ public class Booking {
 	@Id
 	@SequenceGenerator(name = "bms_booking_seq", initialValue = 2001, allocationSize = 1)
 	@GeneratedValue(generator = "bms_booking_seq", strategy = GenerationType.SEQUENCE)
-	int bookingId;
+	private int bookingId;
 
-	String bookingDate;
-	double bookingFare;
-	int bookingStatus;
+	private String bookingDate;
+	private double bookingFare;
+	private int bookingStatus;
 
 //	int noOfPassengers;
 

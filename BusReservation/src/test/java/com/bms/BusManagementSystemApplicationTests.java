@@ -27,12 +27,17 @@ class BusManagementSystemApplicationTests {
 
 	@Autowired
 	UserDao userDao;
+	
 	@Autowired
+	
 	BookingDao bookingDao;
 	@Autowired
+	
 	BusDao busDao;
+	
 	@Autowired
 	RouteDao routeDao;
+	
 	@Autowired
 	PassengerDao passengerDao;
 
@@ -212,4 +217,12 @@ class BusManagementSystemApplicationTests {
 			System.out.println(passenger.getEmailId());
 		}
 	}	
+	
+	@Test
+	public void findAllSeatsBookedTest() {
+		List<Object[]> seats = passengerDao.findAllSeatsBooked(4001, "15-08-2022");
+		for (Object s:seats) {
+			System.out.println(s);
+		}
+	}
 }

@@ -20,10 +20,10 @@ public class Route {
 	@Id
 	@SequenceGenerator(name = "bms_route_seq", initialValue = 5001, allocationSize = 1)
 	@GeneratedValue(generator = "bms_route_seq", strategy = GenerationType.SEQUENCE)
-	int routeId;
+	private int routeId;
 	
-	String origin;
-	String destination;
+	private String origin;
+	private String destination;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "route",fetch = FetchType.EAGER)

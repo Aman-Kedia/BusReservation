@@ -21,23 +21,23 @@ public class User {
 	@Id
 	@SequenceGenerator(name = "bms_user_seq", initialValue = 1001, allocationSize = 1)
 	@GeneratedValue(generator = "bms_user_seq", strategy = GenerationType.SEQUENCE)
-	int userId;
+	private int userId;
 
-	String firstName;
-	String lastName;
+	private String firstName;
+	private String lastName;
 
 	@Column(unique = true)
-	String email;
+	private String email;
 
-	String password;
-	String phoneNo;
-	String dateOfBirth;
-	GenderType gender;
+	private String password;
+	private String phoneNo;
+	private String dateOfBirth;
+	private GenderType gender;
 
-	int isAdmin;
+	private int isAdmin;
 
 	@Column(columnDefinition = "int default 250.0")
-	double walletBalance;
+	private double walletBalance;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)

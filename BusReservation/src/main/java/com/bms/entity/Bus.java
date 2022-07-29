@@ -22,20 +22,20 @@ public class Bus {
 	@Id
 	@SequenceGenerator(name = "bms_bus_seq", initialValue = 4001, allocationSize = 1)
 	@GeneratedValue(generator = "bms_bus_seq", strategy = GenerationType.SEQUENCE)
-	int busId;
+	private int busId;
 
-	String busNo;
-	BusType bustype;
-	double fare;
+	private String busNo;
+	private BusType bustype;
+	private double fare;
 
 	@Column(columnDefinition = "int default 50")
-	int capacity;
+	private int capacity;
 
 	@Column(length = 5)
-	String arrivalTime;
+	private String arrivalTime;
 
 	@Column(length = 5)
-	String departureTime;
+	private String departureTime;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "bus")
