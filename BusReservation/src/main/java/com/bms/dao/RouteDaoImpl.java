@@ -1,6 +1,11 @@
 package com.bms.dao;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,13 +50,13 @@ public class RouteDaoImpl implements RouteDao {
 	@SuppressWarnings("unchecked")
 	public List<String> viewAllOrigins() {
 		Query query = em.createQuery("select r.origin from Route r");
-		return query.getResultList();
+		return (List<String>)query.getResultList().stream().distinct().collect(Collectors.toList());
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<String> viewAllDestinations() {
 		Query query = em.createQuery("select r.destination from Route r");
-		return query.getResultList();
+		return (List<String>)query.getResultList().stream().distinct().collect(Collectors.toList());
 	}
 
 	@SuppressWarnings("unchecked")
