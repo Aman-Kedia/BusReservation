@@ -1,5 +1,7 @@
 package com.bms.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +15,7 @@ public class BusServiceImpl implements BusService {
 
 	@Autowired
 	BusDao busDao;
-	
+
 	public String addBus(Bus bus) {
 		try {
 			Bus bus1 = busDao.addOrUpdateBus(bus);
@@ -44,4 +46,11 @@ public class BusServiceImpl implements BusService {
 		return busDao.findBusByBusId(busId);
 	}
 
+	public List<Integer> viewAllBusId() {
+		return busDao.viewAllBusId();
+	}
+	
+	public List<Bus> findBusByOriginDestination(String origin, String destination) {
+		return busDao.findBusByOriginDestination(origin, destination);
+	}
 }

@@ -1,5 +1,7 @@
 package com.bms.dao;
 
+import java.util.List;
+
 import com.bms.entity.Bus;
 
 public interface BusDao {
@@ -7,6 +9,7 @@ public interface BusDao {
 
 	Bus findBusByBusId(int busId);
 
-	Bus findBusByRouteId(int routeId);
+	List<Bus> findBusByOriginDestination(String origin, String destination);
 	
+	List<Integer> viewAllBusId();	
 }

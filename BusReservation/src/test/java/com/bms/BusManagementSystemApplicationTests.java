@@ -27,21 +27,22 @@ class BusManagementSystemApplicationTests {
 
 	@Autowired
 	UserDao userDao;
-	
+
 	@Autowired
-	
+
 	BookingDao bookingDao;
 	@Autowired
-	
+
 	BusDao busDao;
-	
+
 	@Autowired
 	RouteDao routeDao;
-	
+
 	@Autowired
 	PassengerDao passengerDao;
 
-	//--------------------------------USER ENTITY TESTS---------------------------------------------
+	// --------------------------------USER ENTITY
+	// TESTS---------------------------------------------
 
 	@Test
 	public void addOrUpdateUserTest() {
@@ -65,9 +66,9 @@ class BusManagementSystemApplicationTests {
 		User user = userDao.findUserByUserId(1007);
 		System.out.println(user.getFirstName() + " " + user.getUserId());
 	}
-	
+
 	@Test
-	public void findUserByEmailIdTest(){
+	public void findUserByEmailIdTest() {
 		User user = userDao.findUserByEmailId("mike@lti.com");
 		System.out.println(user.getFirstName() + " " + user.getUserId());
 	}
@@ -82,7 +83,7 @@ class BusManagementSystemApplicationTests {
 
 	@Test
 	public void viewAllBookingsByUserIdTest() {
-		
+
 	}
 
 	@Test
@@ -91,7 +92,8 @@ class BusManagementSystemApplicationTests {
 		assertTrue(isValid);
 	}
 
-	//-------------------------------ROUTE ENTITY TESTS-----------------------------------------------
+	// -------------------------------ROUTE ENTITY
+	// TESTS-----------------------------------------------
 
 	@Test
 	public void addOrUpdateRouteTest() {
@@ -116,32 +118,33 @@ class BusManagementSystemApplicationTests {
 			System.out.println(b.getBusId() + " " + b.getBusNo());
 		}
 	}
-	
+
 	@Test
 	public void viewAllOriginsTest() {
 		List<String> origins = routeDao.viewAllOrigins();
-		for(String o:origins) {
+		for (String o : origins) {
 			System.out.println(o);
 		}
 	}
-	
+
 	@Test
 	public void viewAllDestinationsTest() {
 		List<String> destinations = routeDao.viewAllDestinations();
-		for(String d:destinations) {
+		for (String d : destinations) {
 			System.out.println(d);
 		}
 	}
-	
+
 	@Test
 	public void viewAllRouteIdTest() {
 		List<Integer> rids = routeDao.viewAllRouteId();
-		for(int r:rids) {
+		for (int r : rids) {
 			System.out.println(r);
 		}
 	}
 
-	//-------------------------------BUS ENTITY TESTS--------------------------------------------------
+	// -------------------------------BUS ENTITY
+	// TESTS--------------------------------------------------
 
 	@Test
 	public void addOrUpdateBusTest() {
@@ -166,24 +169,42 @@ class BusManagementSystemApplicationTests {
 		Bus bus = busDao.findBusByBusId(4025);
 		System.out.println(bus.getBusId() + " " + bus.getBusNo());
 	}
-	
-	//------------------------------BOOKING ENTITY TESTS-------------------------------------------------
-	
+
+	@Test
+	public void findBusByOriginDestinationTest() {
+		List<Bus> buses = busDao.findBusByOriginDestination("Chennai", "Bangalore");
+		for (Bus b : buses) {
+			System.out.println(b.getBusId() + " " + b.getBusNo());
+		}
+	}
+
+	@Test
+	public void viewAllBusIdTest() {
+		List<Integer> bids = busDao.viewAllBusId();
+		for (int b : bids) {
+			System.out.println(b);
+		}
+	}
+
+	// ------------------------------BOOKING ENTITY
+	// TESTS-------------------------------------------------
+
 	@Test
 	public void addBookingTest() {
-		
+
 		Booking booking = new Booking();
 		booking.setBookingFare(100.0);
 		booking.setBookingDate("26-07-2022");
-		booking.setBookingStatus(1);;
+		booking.setBookingStatus(1);
+		;
 //		booking.setNoOfPassengers(2);
-		
+
 		Bus bus = busDao.findBusByBusId(4018);
 		booking.setBus(bus);
-		
+
 		User user = userDao.findUserByUserId(1004);
 		booking.setUser(user);
-		
+
 		Booking savedBooking = bookingDao.addBooking(booking);
 		assertNotNull(savedBooking);
 	}
@@ -197,34 +218,35 @@ class BusManagementSystemApplicationTests {
 	@Test
 	public void findAllBookingsByBusId() {
 		List<Booking> bookings = bookingDao.findAllBookingsByBusId(4025);
-		for(Booking b:bookings) {
+		for (Booking b : bookings) {
 			System.out.println(b.getBookingId());
 		}
 	}
-	
+
 	@Test
 	public void findAllPassengersByBookingIdTest() {
 		List<Passenger> passengers = bookingDao.findAllPassengersByBookingId(2008);
-		for(Passenger p:passengers) {
+		for (Passenger p : passengers) {
 			System.out.println(p.getFirstName() + " " + p.getLastName());
 		}
 	}
-	
+
 	@Test
 	public void cancelBookingTest() {
 		Booking booking = bookingDao.cancelBooking(2008);
 		System.out.println(booking.getBookingStatus());
 	}
-	
-	//----------------------------PASSENGER ENTITY TESTS----------------------------------------
-	
+
+	// ----------------------------PASSENGER ENTITY
+	// TESTS----------------------------------------
+
 	@Test
 	public void addPassengerTest() {
 		Passenger passenger = new Passenger();
-		
+
 		Booking booking = bookingDao.findBookingByBookingId(2004);
 		Bus bus = busDao.findBusByBusId(4018);
-		
+
 		passenger.setFirstName("Ian");
 		passenger.setLastName("Kan");
 		passenger.setDateOfBirth("09-07-2002");
@@ -234,24 +256,24 @@ class BusManagementSystemApplicationTests {
 		passenger.setBooking(booking);
 		passenger.setEmailId("ian@gmail.com");
 		passenger.setBus(bus);
-		
+
 		Passenger savedPassenger = passengerDao.addPassenger(passenger);
 
 		assertNotNull(savedPassenger);
 	}
-	
+
 	@Test
 	public void findAllPassengersByBusId() {
 		List<Passenger> allPassengersByBusId = passengerDao.findAllPassengersByBusId(4025);
 		for (Passenger passenger : allPassengersByBusId) {
 			System.out.println(passenger.getEmailId());
 		}
-	}	
-	
+	}
+
 	@Test
 	public void findAllSeatsBookedTest() {
 		List<String> seats = passengerDao.findAllSeatsBooked(4001, "15-08-2022");
-		for (String s:seats) {
+		for (String s : seats) {
 			System.out.println(s);
 		}
 	}

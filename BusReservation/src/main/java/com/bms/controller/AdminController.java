@@ -238,6 +238,19 @@ public class AdminController {
 		return busService.findBus(busId);
 	}
 
+//	http://localhost:9090/admin/viewallbusid                                                            [27]
+
+	// TESTED IN SPRING BOOT
+	@RequestMapping(value = "/viewallbusid", method = RequestMethod.GET)
+	public List<Integer> viewAllBusId() {
+		return busService.viewAllBusId();
+	}
+	
+	@GetMapping("/findbusbyorigindestination/{origin}/{destination}")
+	public List<Bus> findBusByOriginDestination(@PathVariable String origin,@PathVariable String destination) {
+		return busService.findBusByOriginDestination(origin, destination);
+	}
+
 //-------------------------------------------------------ROUTE ENTITY--------------------------------------------------------------------
 
 //	{
