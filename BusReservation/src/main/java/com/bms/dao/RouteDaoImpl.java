@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
@@ -39,6 +40,24 @@ public class RouteDaoImpl implements RouteDao {
 	public Route findRouteIdByOriginDestination(String orgin, String destination) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> viewAllOrigins() {
+		Query query = em.createQuery("select r.origin from Route r");
+		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<String> viewAllDestinations() {
+		Query query = em.createQuery("select r.destination from Route r");
+		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Integer> viewAllRouteId() {
+		Query query = em.createQuery("select r.routeId from Route r");
+		return query.getResultList();
 	}
 
 }

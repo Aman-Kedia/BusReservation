@@ -55,5 +55,17 @@ public class RouteServiceImpl implements RouteService {
 	public List<Bus> findAllBuses(int routeId) {
 		return routeDao.findAllBusesByRouteId(routeId);
 	}
+	
+	public List<String> viewAllOrigins() {
+		return routeDao.viewAllOrigins();
+	}
+
+	public List<String> viewAllDestinations() {
+		return routeDao.viewAllDestinations();
+	}
+
+	public List<Integer> viewAllRouteId() {
+		return routeDao.viewAllRouteId();
+	}
 
 }

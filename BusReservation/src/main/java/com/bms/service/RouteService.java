@@ -15,4 +15,10 @@ public interface RouteService {
 	Route findRoute(int routeId);
 
 	List<Bus> findAllBuses(int routeId);
+	
+	List<String> viewAllOrigins();
+	
+	List<String> viewAllDestinations();
+		
+	List<Integer> viewAllRouteId();
 }

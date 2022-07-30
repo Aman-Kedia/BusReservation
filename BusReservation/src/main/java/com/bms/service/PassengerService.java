@@ -12,4 +12,6 @@ public interface PassengerService {
 	UpdatePassenger updatePassenger(Passenger passenger);
 	
 	List<Passenger>  findPassengersByBusId(int busId);
+	
+	List<String> findAllSeatsBooked(int busId, String travelDate);
 }

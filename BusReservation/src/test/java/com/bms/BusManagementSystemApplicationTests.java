@@ -116,6 +116,30 @@ class BusManagementSystemApplicationTests {
 			System.out.println(b.getBusId() + " " + b.getBusNo());
 		}
 	}
+	
+	@Test
+	public void viewAllOriginsTest() {
+		List<String> origins = routeDao.viewAllOrigins();
+		for(String o:origins) {
+			System.out.println(o);
+		}
+	}
+	
+	@Test
+	public void viewAllDestinationsTest() {
+		List<String> destinations = routeDao.viewAllDestinations();
+		for(String d:destinations) {
+			System.out.println(d);
+		}
+	}
+	
+	@Test
+	public void viewAllRouteIdTest() {
+		List<Integer> rids = routeDao.viewAllRouteId();
+		for(int r:rids) {
+			System.out.println(r);
+		}
+	}
 
 	//-------------------------------BUS ENTITY TESTS--------------------------------------------------
 
@@ -226,8 +250,8 @@ class BusManagementSystemApplicationTests {
 	
 	@Test
 	public void findAllSeatsBookedTest() {
-		List<Integer> seats = passengerDao.findAllSeatsBooked(4001, "15-08-2022");
-		for (Integer s:seats) {
+		List<String> seats = passengerDao.findAllSeatsBooked(4001, "15-08-2022");
+		for (String s:seats) {
 			System.out.println(s);
 		}
 	}

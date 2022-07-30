@@ -32,16 +32,10 @@ public class PassengerDaoImpl implements PassengerDao {
         return qry.getResultList();
 	}
 	
-	public List<Integer> findAllSeatsBooked(int busId, String travelDate) {
-//		String jpql = "select p.seatNo from Passenger p where p.busId=busId and p.travelDate=travelDate";
-//		TypedQuery<Object[]> query = (TypedQuery<Object[]>) em.createQuery(jpql);
-//		query.setParameter("busId", busId);
-//		query.setParameter("travelDate", travelDate);
-//		return query.getResultList();
-		
-		Query query = em.createQuery("select p.seatNo from Passenger p where p.busId=busId and p.travelDate=travelDate");
-		query.setParameter("busId", busId);
-		query.setParameter("travelDate", travelDate);
+	public List<String> findAllSeatsBooked(int busId, String travelDate) {
+		Query query = em.createQuery("select p.seatNo from Passenger p where p.bus.busId=:bid and p.travelDate=:td");
+		query.setParameter("bid", busId);
+		query.setParameter("td", travelDate);
 		return query.getResultList();
 	}
 

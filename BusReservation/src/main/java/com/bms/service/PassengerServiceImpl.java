@@ -45,5 +45,9 @@ public class PassengerServiceImpl implements PassengerService {
 	public List<Passenger> findPassengersByBusId(int busId) {
 		return passengerDao.findAllPassengersByBusId(busId);
 	}
+	
+	public List<String> findAllSeatsBooked(int busId, String travelDate) {
+		return passengerDao.findAllSeatsBooked(busId, travelDate);
+	}
 
 }

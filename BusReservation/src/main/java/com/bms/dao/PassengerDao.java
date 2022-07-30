@@ -11,5 +11,5 @@ public interface PassengerDao {
 
 	List<Passenger> findAllPassengersByBusId(int busId);
 	
-	List<Integer> findAllSeatsBooked(int busId, String travelDate);
+	List<String> findAllSeatsBooked(int busId, String travelDate);
 }
