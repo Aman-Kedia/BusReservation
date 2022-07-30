@@ -38,18 +38,21 @@ public class RouteDaoImpl implements RouteDao {
         return buses;
     }
 	
+    // TESTED IN SPRING BOOT
 	@SuppressWarnings("unchecked")
 	public List<String> viewAllOrigins() {
 		Query query = em.createQuery("select r.origin from Route r");
 		return (List<String>)query.getResultList().stream().distinct().collect(Collectors.toList());
 	}
 
+	// TESTED IN SPRING BOOT
 	@SuppressWarnings("unchecked")
 	public List<String> viewAllDestinations() {
 		Query query = em.createQuery("select r.destination from Route r");
 		return (List<String>)query.getResultList().stream().distinct().collect(Collectors.toList());
 	}
 
+	// TESTED IN SPRING BOOT
 	@SuppressWarnings("unchecked")
 	public List<Integer> viewAllRouteId() {
 		Query query = em.createQuery("select r.routeId from Route r");

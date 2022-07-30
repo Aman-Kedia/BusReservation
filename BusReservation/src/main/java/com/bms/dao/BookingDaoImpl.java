@@ -1,5 +1,6 @@
 package com.bms.dao;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -50,6 +51,14 @@ public class BookingDaoImpl implements BookingDao {
 		Booking bk = findBookingByBookingId(BookingId);
 		bk.setBookingStatus(0);
 		return em.merge(bk);
+	}
+
+	//TESTED IN SPRING BOOT
+	public List<Booking> viewAllBookingsByUserId(int userId) {
+		String jpql = "select b from Booking b where b.user.userId=:uid";
+		TypedQuery<Booking> query = em.createQuery(jpql, Booking.class);
+		query.setParameter("uid", userId);
+		return query.getResultList();
 	}
 
 }

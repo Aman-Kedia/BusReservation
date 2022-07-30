@@ -29,6 +29,7 @@ public class UserDaoImpl implements UserDao {
 		return em.find(User.class, userId);
 	}
 
+	// TESTED IN SPRING BOOT
 	public User findUserByEmailId(String email) {
 		String jpql = "select u from User u where u.email=:email";
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
@@ -47,10 +48,6 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public User addOrUpdateAdmin(User user) {
 		return em.merge(user);
-	}
-
-	public List<Booking> viewAllBookingsByUserId(int userId) {
-		return null;
 	}
 	
 	//TESTED IN SPRING BOOT

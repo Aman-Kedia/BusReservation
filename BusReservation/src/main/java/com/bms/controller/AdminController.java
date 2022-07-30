@@ -192,6 +192,7 @@ public class AdminController {
 
 //	http://localhost:9090/admin/findallseatsbooked/4027/21-07-2020                                            [23]
 
+	//TESTED IN SPRING BOOT
 	@RequestMapping(value = "findallseatsbooked/{busId}/{travelDate}", method = RequestMethod.GET)
 	public List<String> findAllSeatsBooked(@PathVariable int busId, @PathVariable String travelDate) {
 		return passengerService.findAllSeatsBooked(busId, travelDate);
@@ -246,6 +247,7 @@ public class AdminController {
 		return busService.viewAllBusId();
 	}
 	
+	//TESTED IN SPRING BOOT
 	@GetMapping("/findbusbyorigindestination/{origin}/{destination}")
 	public List<Bus> findBusByOriginDestination(@PathVariable String origin,@PathVariable String destination) {
 		return busService.findBusByOriginDestination(origin, destination);

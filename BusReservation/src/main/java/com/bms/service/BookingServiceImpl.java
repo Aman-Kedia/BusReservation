@@ -61,4 +61,8 @@ public class BookingServiceImpl implements BookingService {
 		bookingDao.cancelBooking(bookingId);
 	}
 
+	public List<Booking> viewAllBookingsByUserId(int userId) {
+		return bookingDao.viewAllBookingsByUserId(userId);
+	}
+
 }

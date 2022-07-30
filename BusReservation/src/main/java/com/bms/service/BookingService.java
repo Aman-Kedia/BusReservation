@@ -19,5 +19,7 @@ public interface BookingService {
 	List<Booking> findAllBookingsbyBusId(int busId);
 	
 	void cancelBooking(int bookingId);
+	
+	List<Booking> viewAllBookingsByUserId(int userId);
 
 }

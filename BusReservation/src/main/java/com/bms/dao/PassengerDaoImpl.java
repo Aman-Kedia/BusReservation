@@ -32,6 +32,7 @@ public class PassengerDaoImpl implements PassengerDao {
         return qry.getResultList();
 	}
 	
+	// TESTED IN SPRING BOOT
 	public List<String> findAllSeatsBooked(int busId, String travelDate) {
 		Query query = em.createQuery("select p.seatNo from Passenger p where p.bus.busId=:bid and p.travelDate=:td");
 		query.setParameter("bid", busId);

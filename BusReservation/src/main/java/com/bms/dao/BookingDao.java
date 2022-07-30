@@ -1,5 +1,6 @@
 package com.bms.dao;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import com.bms.entity.Booking;
@@ -15,5 +16,7 @@ public interface BookingDao {
 	List<Booking> findAllBookingsByBusId(int BusId);
 
 	Booking cancelBooking(int BookingId);		//return type booking
+	
+	List<Booking> viewAllBookingsByUserId(int userId);
 	
 }

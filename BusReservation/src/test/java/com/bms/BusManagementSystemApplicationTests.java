@@ -3,6 +3,7 @@ package com.bms;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -79,11 +80,6 @@ class BusManagementSystemApplicationTests {
 		for (User u : users) {
 			System.out.println(u.getUserId() + " " + u.getFirstName());
 		}
-	}
-
-	@Test
-	public void viewAllBookingsByUserIdTest() {
-
 	}
 
 	@Test
@@ -235,6 +231,14 @@ class BusManagementSystemApplicationTests {
 	public void cancelBookingTest() {
 		Booking booking = bookingDao.cancelBooking(2008);
 		System.out.println(booking.getBookingStatus());
+	}
+	
+	@Test
+	public void viewAllBookingsByUserIdTest() {
+		List<Booking> bookings = bookingDao.viewAllBookingsByUserId(1001);
+		for(Booking b:bookings) {
+			System.out.println(b.getBookingId() + " " + b.getBookingDate() + " " + b.getBookingStatus());
+		}
 	}
 
 	// ----------------------------PASSENGER ENTITY

@@ -29,6 +29,7 @@ public class BusDaoImpl implements BusDao {
 		return em.find(Bus.class, busId);
 	}
 
+	// TESTED IN SPRING BOOT
 	public List<Bus> findBusByOriginDestination(String origin, String destination) {
 		Query query = em.createQuery("select b from Bus b where b.route.origin=:orgn and b.route.destination=:dest");
 		query.setParameter("orgn", origin);
@@ -36,6 +37,7 @@ public class BusDaoImpl implements BusDao {
 		return query.getResultList();
 	}
 
+	// TESTED IN SPRING BOOT
 	@SuppressWarnings("unchecked")
 	public List<Integer> viewAllBusId() {
 		Query query = em.createQuery("select b.busId from Bus b");
