@@ -33,7 +33,8 @@ public class Passenger {
 	@JoinColumn(name = "bookingId")
 	Booking booking;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//don't require
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "busId")
 	Bus bus;
 

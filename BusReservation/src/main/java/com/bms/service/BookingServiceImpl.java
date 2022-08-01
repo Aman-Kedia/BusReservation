@@ -22,6 +22,7 @@ public class BookingServiceImpl implements BookingService {
 			Booking booking1 = bookingDao.addBooking(booking);
 			return booking1;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}

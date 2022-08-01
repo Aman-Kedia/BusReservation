@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,14 +40,15 @@ public class Bus {
 	private String departureTime;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "bus")
+	@OneToMany(mappedBy = "bus", fetch = FetchType.EAGER)
 	List<Booking> bookings;
 
+	// don't required
 	@JsonIgnore
-	@OneToMany(mappedBy = "bus")
+	@OneToMany(mappedBy = "bus", fetch = FetchType.EAGER)
 	List<Passenger> passengers;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "routeId")
 	Route route;
 

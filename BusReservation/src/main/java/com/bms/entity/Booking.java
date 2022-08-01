@@ -31,15 +31,15 @@ public class Booking {
 
 //	int noOfPassengers;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	User user;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "booking", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<Passenger> passengers;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "busId")
 	Bus bus;
 
