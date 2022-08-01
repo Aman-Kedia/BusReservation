@@ -36,8 +36,7 @@ public class User {
 
 	private int isAdmin;
 
-	@Column(columnDefinition = "double default 250.0")
-	private double walletBalance;
+	private int walletBalance;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -115,11 +114,11 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 
-	public double getWalletBalance() {
+	public int getWalletBalance() {
 		return walletBalance;
 	}
 
-	public void setWalletBalance(double walletBalance) {
+	public void setWalletBalance(int walletBalance) {
 		this.walletBalance = walletBalance;
 	}
 

@@ -21,7 +21,8 @@ public class PassengerServiceImpl implements PassengerService {
 			Passenger passenger1 = passengerDao.addPassenger(passenger);
 			return "Passenger Successfully added.Your passengerId = " + passenger1.getPassengerId();
 		} catch (Exception e) {
-			return "Unable to add passenger";
+//			return "Unable to add passenger";
+			return e.getMessage();
 		}
 	}
 

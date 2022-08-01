@@ -1,5 +1,6 @@
 package com.bms.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,14 +25,15 @@ public class Passenger {
 	private String emailId;
 	private String phoneNo;
 	private String dateOfBirth;
+	private GenderType gender;
 	private String travelDate;
 	private String seatNo;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "bookingId")
 	Booking booking;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "busId")
 	Bus bus;
 
@@ -81,6 +83,14 @@ public class Passenger {
 
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public GenderType getGender() {
+		return gender;
+	}
+
+	public void setGender(GenderType gender) {
+		this.gender = gender;
 	}
 
 	public String getTravelDate() {

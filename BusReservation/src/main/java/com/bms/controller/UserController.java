@@ -122,9 +122,8 @@ public class UserController {
 	
 	//TESTED IN SPRING BOOT
 	@RequestMapping(value = "/addbooking", method = RequestMethod.POST)
-	public String addBooking(@RequestBody Booking booking) {
-		String message = bookingService.addBooking(booking);
-		return message;
+	public Booking addBooking(@RequestBody Booking booking) {
+		return bookingService.addBooking(booking);
 	}
 	
 	//TESTED IN SPRING BOOT

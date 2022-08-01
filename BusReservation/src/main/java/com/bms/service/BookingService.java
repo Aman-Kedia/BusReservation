@@ -8,7 +8,7 @@ import com.bms.entity.Passenger;
 
 public interface BookingService {
 	
-	String addBooking(Booking booking);
+	Booking addBooking(Booking booking);
 	
 	UpdateBooking updatebooking (Booking booking);
 	

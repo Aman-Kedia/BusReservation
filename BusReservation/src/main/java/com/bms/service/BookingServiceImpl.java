@@ -17,12 +17,12 @@ public class BookingServiceImpl implements BookingService {
 	@Autowired
 	BookingDao bookingDao;
 
-	public String addBooking(Booking booking) {
+	public Booking addBooking(Booking booking) {
 		try {
 			Booking booking1 = bookingDao.addBooking(booking);
-			return "Booking Successful.Your bookingId = " + booking1.getBookingId();
+			return booking1;
 		} catch (Exception e) {
-			return "Unexpected error occured.";
+			return null;
 		}
 	}
 

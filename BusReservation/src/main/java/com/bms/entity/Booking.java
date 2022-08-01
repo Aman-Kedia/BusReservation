@@ -2,6 +2,7 @@ package com.bms.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Booking {
 
 //	int noOfPassengers;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	User user;
 
@@ -38,7 +39,7 @@ public class Booking {
 	@OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
 	List<Passenger> passengers;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "busId")
 	Bus bus;
 
