@@ -25,7 +25,7 @@ public class Bus {
 	private int busId;
 
 	private String busNo;
-	private BusType bustype;
+	private BusType busType;
 	private double fare;
 
 	@Column(columnDefinition = "int default 50")
@@ -65,12 +65,12 @@ public class Bus {
 		this.busNo = busNo;
 	}
 
-	public BusType getBustype() {
-		return bustype;
+	public BusType getBusType() {
+		return busType;
 	}
 
-	public void setBustype(BusType bustype) {
-		this.bustype = bustype;
+	public void setBusType(BusType busType) {
+		this.busType = busType;
 	}
 
 	public double getFare() {

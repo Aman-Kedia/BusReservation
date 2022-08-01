@@ -147,7 +147,7 @@ class BusManagementSystemApplicationTests {
 		Bus bus = new Bus();
 
 		bus.setBusNo("MH02TC1684");
-		bus.setBustype(BusType.Non_AC);
+		bus.setBusType(BusType.Non_AC);
 		bus.setFare(900.67);
 		bus.setArrivalTime("18:00");
 		bus.setDepartureTime("13:00");
