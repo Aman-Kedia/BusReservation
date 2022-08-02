@@ -43,7 +43,6 @@ public class Bus {
 	@OneToMany(mappedBy = "bus", fetch = FetchType.EAGER)
 	List<Booking> bookings;
 
-	// don't required
 	@JsonIgnore
 	@OneToMany(mappedBy = "bus", fetch = FetchType.EAGER)
 	List<Passenger> passengers;
