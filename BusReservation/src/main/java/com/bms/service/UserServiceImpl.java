@@ -15,11 +15,18 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;
-	
+
+	@Autowired
+	EmailService emailService;
+
 	public String signUp(User user) {
 		try {
-			//Send Email not done
 			User user2 = userDao.addOrUpdateUser(user);
+			String email = user2.getEmail();
+			String text = "Your UserID = " + user2.getUserId() + "\nYour password = " + user2.getPassword();
+			String subject = "Registration Confirmation";
+			emailService.sendEmailForSignUp(email, text, subject);
+			System.out.println("Email Sent");
 			return "Sign up successful.Your userId :" + user2.getUserId();
 		} catch (Exception e) {
 			return "Sign up failed";
@@ -29,13 +36,11 @@ public class UserServiceImpl implements UserService {
 	public UpdateUser updateUser(User user) {
 		UpdateUser upd = new UpdateUser();
 		try {
-			if(user.getUserId() ==0) {
+			if (user.getUserId() == 0) {
 				throw new PrintExceptionMessage("Please mention userId");
-			}
-			else if (userDao.findUserByUserId(user.getUserId()) == null) {
+			} else if (userDao.findUserByUserId(user.getUserId()) == null) {
 				throw new PrintExceptionMessage("User not found");
-			}
-			else {
+			} else {
 				User user2 = userDao.addOrUpdateUser(user);
 				upd.setMessage("Profile Updated Successfully");
 				upd.setUser(user2);
@@ -64,7 +69,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public String getUserName(int userId) {
-		return (userDao.findUserByUserId(userId).getFirstName()+" "+userDao.findUserByUserId(userId).getLastName());
+		return (userDao.findUserByUserId(userId).getFirstName() + " " + userDao.findUserByUserId(userId).getLastName());
 	}
 
 }

@@ -16,9 +16,17 @@ public class PassengerServiceImpl implements PassengerService {
 	@Autowired
 	PassengerDao passengerDao;
 	
+	@Autowired
+	EmailService emailService;
+	
 	public String addPassenger(Passenger passenger) {
 		try {
 			Passenger passenger1 = passengerDao.addPassenger(passenger);
+			String email = passenger1.getEmailId();
+			String text = "Your Passenger Id is: " + passenger1.getPassengerId() + "\nYour booking id is: " + passenger1.getBooking().getBookingId();
+			String subject = "Tickets booked";
+			emailService.sendEmailForSignUp(email, text, subject);
+			System.out.println("Email Sent");
 			return "Passenger Successfully added.Your passengerId = " + passenger1.getPassengerId();
 		} catch (Exception e) {
 //			return "Unable to add passenger";
