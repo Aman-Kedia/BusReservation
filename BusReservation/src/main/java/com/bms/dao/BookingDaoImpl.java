@@ -1,11 +1,14 @@
 package com.bms.dao;
 
-import java.awt.print.Book;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.swing.text.DateFormatter;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
@@ -18,6 +21,11 @@ public class BookingDaoImpl implements BookingDao {
 	
 	@PersistenceContext
 	EntityManager em;
+	
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM");
+	LocalDate d = LocalDate.now();
+	String month = d.format(dtf1);
 		
 	//TESTED IN SPRING BOOT
 	@Transactional
@@ -59,6 +67,42 @@ public class BookingDaoImpl implements BookingDao {
 		TypedQuery<Booking> query = em.createQuery(jpql, Booking.class);
 		query.setParameter("uid", userId);
 		return query.getResultList();
+	}
+
+	public int viewTodaysBookings() {
+		String jpql = "select b from Booking b where b.bookingDate =: cd";
+		TypedQuery<Booking> query = em.createQuery(jpql, Booking.class);
+		query.setParameter("cd", d.format(dtf));
+		return query.getResultList().size();
+	}
+	
+	public double viewTodaysRevenue() {
+		Query query = em.createQuery("select sum(b.bookingFare) from Booking b where b.bookingDate =: cd");
+		query.setParameter("cd", d.format(dtf));
+		return (double)query.getSingleResult();
+	}
+
+	public int viewMonthlyBookings() {
+		System.out.println(month);
+		String jpql = "select b from Booking b where b.bookingDate like '"+month+"-%'";
+		TypedQuery<Booking> query = em.createQuery(jpql, Booking.class);
+		return query.getResultList().size();
+	}
+
+	public double viewMonthlyRevenue() {
+		Query query = em.createQuery("select sum(b.bookingFare) from Booking b where b.bookingDate like '"+month+"-%'");
+		return (double)query.getSingleResult();
+	}
+	
+	public String findTravelDateByBookingId(int bookingId) {
+		Booking bk = findBookingByBookingId(bookingId);
+		List<Passenger> passengers = bk.getPassengers();
+		String tDate = null;
+		for(Passenger p:passengers) {
+			tDate = p.getTravelDate();
+		}
+		System.out.println(tDate);
+		return tDate;
 	}
 
 }

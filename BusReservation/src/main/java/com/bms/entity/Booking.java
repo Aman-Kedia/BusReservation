@@ -28,8 +28,7 @@ public class Booking {
 	private String bookingDate;
 	private double bookingFare;
 	private int bookingStatus;
-
-//	int noOfPassengers;
+	private int noOfPassengers;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
@@ -75,13 +74,13 @@ public class Booking {
 		this.bookingStatus = bookingStatus;
 	}
 
-//	public int getNoOfPassengers() {
-//		return noOfPassengers;
-//	}
-//
-//	public void setNoOfPassengers(int noOfPassengers) {
-//		this.noOfPassengers = noOfPassengers;
-//	}
+	public int getNoOfPassengers() {
+		return noOfPassengers;
+	}
+
+	public void setNoOfPassengers(int noOfPassengers) {
+		this.noOfPassengers = noOfPassengers;
+	}
 
 	public User getUser() {
 		return user;

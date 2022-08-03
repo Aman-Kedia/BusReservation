@@ -240,6 +240,26 @@ class BusManagementSystemApplicationTests {
 			System.out.println(b.getBookingId() + " " + b.getBookingDate() + " " + b.getBookingStatus());
 		}
 	}
+	
+	@Test
+	public void viewTodaysBookings() {
+		System.out.println(bookingDao.viewTodaysBookings());
+	}
+	
+	@Test
+	public void viewTodaysRevenue() {
+		System.out.println(bookingDao.viewTodaysRevenue());
+	}
+	
+	@Test
+	public void viewMonthlyBookings() {
+		System.out.println(bookingDao.viewMonthlyBookings());
+	}
+	
+	@Test
+	public void findTravelDateByBookingId() {
+		bookingDao.findTravelDateByBookingId(2015);
+	}
 
 	// ----------------------------PASSENGER ENTITY
 	// TESTS----------------------------------------

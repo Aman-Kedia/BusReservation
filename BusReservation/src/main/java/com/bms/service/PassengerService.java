@@ -7,7 +7,7 @@ import com.bms.entity.Passenger;
 
 public interface PassengerService {
 	
-	String  addPassenger(Passenger passenger);
+	String  addPassenger(Passenger passengers);
 	
 	UpdatePassenger updatePassenger(Passenger passenger);
 	

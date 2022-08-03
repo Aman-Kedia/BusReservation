@@ -66,4 +66,24 @@ public class BookingServiceImpl implements BookingService {
 		return bookingDao.viewAllBookingsByUserId(userId);
 	}
 
+	public int viewTodaysBookings() {
+		return bookingDao.viewTodaysBookings();
+	}
+
+	public double viewTodaysRevenue() {
+		return bookingDao.viewTodaysRevenue();
+	}
+
+	public int viewMonthlyBookings() {
+		return bookingDao.viewMonthlyBookings();
+	}
+
+	public double viewMonthlyRevenue() {
+		return bookingDao.viewMonthlyRevenue();
+	}
+
+	public String findTravelDateByBookingId(int bookingId) {
+		return bookingDao.findTravelDateByBookingId(bookingId);
+	}
+
 }

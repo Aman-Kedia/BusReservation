@@ -21,5 +21,14 @@ public interface BookingService {
 	void cancelBooking(int bookingId);
 	
 	List<Booking> viewAllBookingsByUserId(int userId);
-
+	
+	int viewTodaysBookings();
+	
+	double viewTodaysRevenue();
+	
+	int viewMonthlyBookings();
+	
+	double viewMonthlyRevenue();
+	
+	String findTravelDateByBookingId(int bookingId);
 }

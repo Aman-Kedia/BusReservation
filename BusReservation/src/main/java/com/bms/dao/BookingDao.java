@@ -19,4 +19,13 @@ public interface BookingDao {
 	
 	List<Booking> viewAllBookingsByUserId(int userId);
 	
+	int viewTodaysBookings();
+	
+	int viewMonthlyBookings();
+	
+	double viewTodaysRevenue();
+	
+	double viewMonthlyRevenue();
+	
+	String findTravelDateByBookingId(int bookingId);
 }

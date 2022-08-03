@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bms.dto.LoginDto;
 import com.bms.dto.UpdateUser;
 import com.bms.entity.Booking;
+import com.bms.entity.Passenger;
 import com.bms.entity.User;
 import com.bms.service.BookingService;
 import com.bms.service.UserService;
@@ -130,6 +131,11 @@ public class UserController {
 	@GetMapping("/viewbookingsbyuserid/{userId}")
 	public List<Booking> viewAllBookingsByUserId(@PathVariable int userId){
 		return bookingService.viewAllBookingsByUserId(userId);
+	}
+	
+	@GetMapping("/gettraveldate/{bookingId}")
+	public String findTravelDateByBookingId(@PathVariable int bookingId) {
+		return bookingService.findTravelDateByBookingId(bookingId);
 	}
 	
 //-------------------------------------------PASSENGER ENTITY-------------------------------------------------------------

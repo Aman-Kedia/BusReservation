@@ -113,6 +113,26 @@ public class AdminController {
 	public void cancelBooking(@PathVariable int bookingId) {
 		bookingService.cancelBooking(bookingId);
 	}
+	
+	@GetMapping("/todaybook")
+	public int viewTodaysBookings() {
+		return bookingService.viewTodaysBookings();
+	}
+
+	@GetMapping("/todayrev")
+	public double viewTodaysRevenue() {
+		return bookingService.viewTodaysRevenue();
+	}
+
+	@GetMapping("/monthlybook")
+	public int viewMonthlyBookings() {
+		return bookingService.viewMonthlyBookings();
+	}
+
+	@GetMapping("/monthlyrev")
+	public double viewMonthlyRevenue() {
+		return bookingService.viewMonthlyRevenue();
+	}
 
 //--------------------------------------------PASSENGER ENTITY------------------------------------------------------------------
 
@@ -169,8 +189,8 @@ public class AdminController {
 
 	// TESTED IN SPRING BOOT
 	@RequestMapping(value = "/addpassenger", method = RequestMethod.POST)
-	public String addPassenger(@RequestBody Passenger passenger) {
-		String message = passengerService.addPassenger(passenger);
+	public String addPassenger(@RequestBody Passenger passengers) {
+		String message = passengerService.addPassenger(passengers);
 		return message;
 	}
 
@@ -192,7 +212,7 @@ public class AdminController {
 
 //	http://localhost:9090/admin/findallseatsbooked/4027/21-07-2020                                            [23]
 
-	//TESTED IN SPRING BOOT
+	// TESTED IN SPRING BOOT
 	@RequestMapping(value = "/findallseatsbooked/{busId}/{travelDate}", method = RequestMethod.GET)
 	public List<String> findAllSeatsBooked(@PathVariable int busId, @PathVariable String travelDate) {
 		return passengerService.findAllSeatsBooked(busId, travelDate);
@@ -246,10 +266,10 @@ public class AdminController {
 	public List<Integer> viewAllBusId() {
 		return busService.viewAllBusId();
 	}
-	
-	//TESTED IN SPRING BOOT
+
+	// TESTED IN SPRING BOOT
 	@GetMapping("/findbusbyorigindestination/{origin}/{destination}")
-	public List<Bus> findBusByOriginDestination(@PathVariable String origin,@PathVariable String destination) {
+	public List<Bus> findBusByOriginDestination(@PathVariable String origin, @PathVariable String destination) {
 		return busService.findBusByOriginDestination(origin, destination);
 	}
 

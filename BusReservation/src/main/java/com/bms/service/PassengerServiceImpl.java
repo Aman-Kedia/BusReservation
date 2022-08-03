@@ -27,10 +27,10 @@ public class PassengerServiceImpl implements PassengerService {
 			String subject = "Tickets booked";
 			emailService.sendEmailForSignUp(email, text, subject);
 			System.out.println("Email Sent");
-			return "Passenger Successfully added.Your passengerId = " + passenger1.getPassengerId();
+			return "Booking Successfull!";
 		} catch (Exception e) {
-//			return "Unable to add passenger";
-			return e.getMessage();
+			return "Booking failed";
+//			return e.getMessage();
 		}
 	}
 
